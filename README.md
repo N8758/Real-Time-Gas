@@ -124,8 +124,4 @@ That’s it! Live in 60 seconds.
 | Deployment ready                   | ✅ Yes       |
 | Scalable & readable codebase       | ✅ Yes       |
 
----
 
-
-Would you like me to generate a `package.json` and `/public/` assets too?
-```
