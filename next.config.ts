@@ -1,12 +1,28 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
 
-  // This will ignore ESLint errors during builds on Vercel
-  eslint: {
-    ignoreDuringBuilds: true,
+  images: {
+    domains: ['assets.coingecko.com', 'example.com'], // add other external image domains here
+  },
+
+  // Optional: Custom Webpack configuration
+  webpack: (config) => {
+    // Example: Add aliases or custom loaders
+    return config;
+  },
+
+  // Optional: Redirects example
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+    ];
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
