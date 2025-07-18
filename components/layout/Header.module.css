@@ -1,0 +1,33 @@
+/* layout/Header.module.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #111;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav ul li a:hover {
+  color: #00ffcc;
+}

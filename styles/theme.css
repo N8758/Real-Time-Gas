@@ -1,0 +1,21 @@
+/* theme.css - Light/Dark mode themes */
+
+:root {
+  --background: #ffffff;
+  --text: #111111;
+  --accent: #0070f3;
+
+  --card-background: #f5f5f5;
+  --tooltip-bg: #333333;
+  --tooltip-text: #ffffff;
+}
+
+[data-theme='dark'] {
+  --background: #0d1117;
+  --text: #c9d1d9;
+  --accent: #58a6ff;
+
+  --card-background: #161b22;
+  --tooltip-bg: #1f2933;
+  --tooltip-text: #e2e8f0;
+}

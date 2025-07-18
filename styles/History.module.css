@@ -1,0 +1,62 @@
+/* styles/History.module.css */
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark clean gradient */
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #00fff7;
+  letter-spacing: 1px;
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.2);
+}
+
+.summaryBox {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  backdrop-filter: blur(6px);
+  color: #dffdfd;
+}
+
+.summaryBox p {
+  margin: 0.3rem 0;
+}
+
+.chartBox {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chartBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.chartBox h2 {
+  text-align: center;
+  color: #00d2ff;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0, 210, 255, 0.3);
+}

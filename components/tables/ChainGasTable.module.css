@@ -1,0 +1,52 @@
+.container {
+  background-color: #1b1b1b; /* same as About section */
+  padding: 2.5rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #00d2ff;
+  margin-bottom: 1.5rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1e293b; /* dark navy bg */
+  border-radius: 16px;
+  overflow: hidden;
+  color: #ffffff; /* white text */
+}
+
+.table th,
+.table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.table th {
+  background-color: #334155; /* slate dark */
+  font-weight: 600;
+  color: #e2e8f0; /* light slate */
+  border-bottom: 2px solid #64748b;
+}
+
+.table td {
+  background-color: #1e293b; /* same dark as table */
+  border-bottom: 1px solid #334155;
+}
+
+.table tr:hover td {
+  background-color: #334155; /* hover dark highlight */
+  transition: background-color 0.2s ease;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
