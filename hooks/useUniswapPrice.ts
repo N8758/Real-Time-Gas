@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useGasStore } from "@/store/gasStore";
-import { ethers } from "ethers";
+import { JsonRpcProvider } from "ethers";
+import { Contract } from "ethers";
 import { Pool } from "@uniswap/v3-sdk";
 import { Token } from "@uniswap/sdk-core";
 import IUniswapV3PoolABI from "@/abis/IUniswapV3Pool.json";
@@ -19,15 +20,9 @@ export const useUniswapPrice = () => {
           throw new Error("Missing ETH RPC URL or Uniswap pool address");
         }
 
-        const provider = new ethers.providers.JsonRpcProvider(
-          rpcUrl.replace("wss://", "https://")
-        );
+        const provider = new JsonRpcProvider(rpcUrl.replace("wss://", "https://"));
 
-        const poolContract = new ethers.Contract(
-          poolAddress,
-          IUniswapV3PoolABI,
-          provider
-        );
+        const poolContract = new Contract(poolAddress, IUniswapV3PoolABI, provider);
 
         const [slot0, token0Addr, token1Addr, fee, liquidity] = await Promise.all([
           poolContract.slot0(),
@@ -60,7 +55,7 @@ export const useUniswapPrice = () => {
     };
 
     fetchPrice();
-    const interval = setInterval(fetchPrice, 30000); // 30 seconds
+    const interval = setInterval(fetchPrice, 30000); // 30s refresh
 
     return () => clearInterval(interval);
   }, [setGas, setError]);
