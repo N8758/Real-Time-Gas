@@ -28,7 +28,8 @@
       "@/utils/*": ["utils/*"],
       "@/types/*": ["types/*"],
       "@/styles/*": ["styles/*"],
-      "@/public/*": ["public/*"]
+      "@/public/*": ["public/*"],
+      "@/abis/*": ["abis/*"]  // ✅ <-- FIX ADDED HERE
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
