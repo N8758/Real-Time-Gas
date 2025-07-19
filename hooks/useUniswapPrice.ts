@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useGasStore } from "@/store/gasStore";
-import { JsonRpcProvider } from "ethers";
-import { Contract } from "ethers";
+import { JsonRpcProvider, Contract } from "ethers";
 import { Pool } from "@uniswap/v3-sdk";
 import { Token } from "@uniswap/sdk-core";
 import IUniswapV3PoolABI from "@/abis/IUniswapV3Pool.json";
@@ -17,20 +16,23 @@ export const useUniswapPrice = () => {
         const poolAddress = process.env.NEXT_PUBLIC_UNISWAP_POOL;
 
         if (!rpcUrl || !poolAddress) {
-          throw new Error("Missing ETH RPC URL or Uniswap pool address");
+          throw new Error("Missing RPC URL or Uniswap pool address");
         }
 
-        const provider = new JsonRpcProvider(rpcUrl.replace("wss://", "https://"));
+        const provider = new JsonRpcProvider(
+          rpcUrl.replace("wss://", "https://")
+        );
 
         const poolContract = new Contract(poolAddress, IUniswapV3PoolABI, provider);
 
-        const [slot0, token0Addr, token1Addr, fee, liquidity] = await Promise.all([
-          poolContract.slot0(),
-          poolContract.token0(),
-          poolContract.token1(),
-          poolContract.fee(),
-          poolContract.liquidity(),
-        ]);
+        const [slot0, token0Addr, token1Addr, fee, liquidity] =
+          await Promise.all([
+            poolContract.slot0(),
+            poolContract.token0(),
+            poolContract.token1(),
+            poolContract.fee(),
+            poolContract.liquidity(),
+          ]);
 
         const Token0 = new Token(1, token0Addr, 18, "ETH");
         const Token1 = new Token(1, token1Addr, 6, "USDC");
@@ -46,16 +48,15 @@ export const useUniswapPrice = () => {
 
         const price = pool.token0Price;
         const ethUsd = parseFloat(price.toSignificant(6));
-
         setGas({ ethUsd });
-      } catch (error) {
-        console.error("Error fetching Uniswap ETH price:", error);
+      } catch (err) {
+        console.error("Uniswap fetch error:", err);
         setError("Failed to fetch Uniswap ETH price");
       }
     };
 
     fetchPrice();
-    const interval = setInterval(fetchPrice, 30000); // 30s refresh
+    const interval = setInterval(fetchPrice, 30000); // refresh every 30 s
 
     return () => clearInterval(interval);
   }, [setGas, setError]);
